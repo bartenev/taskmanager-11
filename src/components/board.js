@@ -7,7 +7,7 @@ const createBoardTemplate = () => {
   );
 };
 
-export default class Board extends AbstractComponent{
+export default class Board extends AbstractComponent {
   getTemplate() {
     return createBoardTemplate();
   }
