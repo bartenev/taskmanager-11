@@ -98,8 +98,9 @@ export default class BoardController {
     });
   }
 
-  _onDataChange(taskController, oldData, newData) {
+  _onDataChange(oldData, newData) {
     const index = this._tasks.findIndex((it) => it === oldData);
+    const taskController = this._showedTaskControllers.find((controller) => controller._taskComponent._task === oldData);
 
     if (index === -1) {
       return;
