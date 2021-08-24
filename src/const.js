@@ -31,4 +31,13 @@ const COLORS = [
   `pink`,
 ];
 
-export {DAYS, MONTH_NAMES, COLORS};
+const FilterType = {
+  ALL: `all`,
+  ARCHIVE: `archive`,
+  FAVORITES: `favorites`,
+  OVERDUE: `overdue`,
+  REPEATING: `repeating`,
+  TODAY: `today`,
+};
+
+export {DAYS, MONTH_NAMES, COLORS, FilterType};
