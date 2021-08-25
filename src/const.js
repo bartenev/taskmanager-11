@@ -23,13 +23,13 @@ const DAYS = [
   `su`,
 ];
 
-const COLORS = [
-  `black`,
-  `yellow`,
-  `blue`,
-  `green`,
-  `pink`,
-];
+const color = {
+  BLACK: `black`,
+  YELLOW: `yellow`,
+  BLUE: `blue`,
+  GREEN: `green`,
+  PINK: `pink`,
+};
 
 const FilterType = {
   ALL: `all`,
@@ -39,5 +39,7 @@ const FilterType = {
   REPEATING: `repeating`,
   TODAY: `today`,
 };
+
+const COLORS = Object.values(color);
 
 export {DAYS, MONTH_NAMES, COLORS, FilterType};
