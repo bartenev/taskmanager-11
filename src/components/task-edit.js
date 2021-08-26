@@ -55,8 +55,8 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
 };
 
 const createTaskEditTemplate = (task, options = {}) => {
-  const {dueDate, color} = task;
-  const {isDateShowing, isRepeatingTask, activeRepeatingDays, currentDescription: description} = options;
+  const {dueDate} = task;
+  const {isDateShowing, isRepeatingTask, activeRepeatingDays, currentDescription: description, currentColor: color} = options;
 
   const isExpired = dueDate instanceof Date && isOverdueDate(dueDate, new Date());
   const isBlockSaveButton = (isDateShowing && isRepeatingTask) ||
@@ -123,7 +123,7 @@ const createTaskEditTemplate = (task, options = {}) => {
       </fieldset>`
       : ``
     }
-                
+
               </div>
             </div>
 
@@ -168,6 +168,7 @@ export default class TaskEdit extends AbstractSmartComponent {
     super();
     this._task = task;
     this._isDateShowing = !!task.dueDate;
+    this._currentColor = task.color;
     this._isRepeatingTask = Object.values(task.repeatingDays).some(Boolean);
     this._activeRepeatingDays = Object.assign({}, task.repeatingDays);
     this._currentDescription = task.description;
@@ -186,6 +187,7 @@ export default class TaskEdit extends AbstractSmartComponent {
       isRepeatingTask: this._isRepeatingTask,
       activeRepeatingDays: this._activeRepeatingDays,
       currentDescription: this._currentDescription,
+      currentColor: this._currentColor,
     });
   }
 
@@ -217,6 +219,7 @@ export default class TaskEdit extends AbstractSmartComponent {
     this._isRepeatingTask = Object.values(task.repeatingDays).some(Boolean);
     this._activeRepeatingDays = Object.assign({}, task.repeatingDays);
     this._currentDescription = task.description;
+    this._currentColor = task.color;
 
     this.rerender();
   }
@@ -267,11 +270,19 @@ export default class TaskEdit extends AbstractSmartComponent {
         this.rerender();
       });
 
+    element.querySelector(`.card__colors-wrap`)
+      .addEventListener(`click`, (evt) => {
+        if (evt.target.classList.contains(`card__color-input`)
+          && evt.target.value !== this._currentColor) {
+          this._currentColor = evt.target.value;
+          this.rerender();
+        }
+      });
+
     const repeatDays = element.querySelector(`.card__repeat-days`);
     if (repeatDays) {
       repeatDays.addEventListener(`change`, (evt) => {
         this._activeRepeatingDays[evt.target.value] = evt.target.checked;
-
         this.rerender();
       });
     }
