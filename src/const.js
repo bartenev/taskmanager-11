@@ -23,7 +23,7 @@ const DAYS = [
   `su`,
 ];
 
-const color = {
+const COLOR = {
   BLACK: `black`,
   YELLOW: `yellow`,
   BLUE: `blue`,
@@ -40,6 +40,6 @@ const FilterType = {
   TODAY: `today`,
 };
 
-const COLORS = Object.values(color);
+const COLORS = Object.values(COLOR);
 
-export {DAYS, MONTH_NAMES, COLORS, FilterType};
+export {DAYS, MONTH_NAMES, COLORS, COLOR, FilterType};
