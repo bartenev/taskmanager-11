@@ -23,12 +23,23 @@ const DAYS = [
   `su`,
 ];
 
-const COLORS = [
-  `black`,
-  `yellow`,
-  `blue`,
-  `green`,
-  `pink`,
-];
+const COLOR = {
+  BLACK: `black`,
+  YELLOW: `yellow`,
+  BLUE: `blue`,
+  GREEN: `green`,
+  PINK: `pink`,
+};
 
-export {DAYS, MONTH_NAMES, COLORS};
+const FilterType = {
+  ALL: `all`,
+  ARCHIVE: `archive`,
+  FAVORITES: `favorites`,
+  OVERDUE: `overdue`,
+  REPEATING: `repeating`,
+  TODAY: `today`,
+};
+
+const COLORS = Object.values(COLOR);
+
+export {DAYS, MONTH_NAMES, COLORS, COLOR, FilterType};
