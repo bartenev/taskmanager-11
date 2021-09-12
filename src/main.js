@@ -9,6 +9,7 @@ import TasksModel from "./models/tasks.js";
 import {render} from "./utils/render.js";
 
 const AUTHORIZATION = `Basic dhf;ziofliudgspuf`;
+const END_POINT = `https://11.ecmascript.pages.academy/task-manager`;
 
 // const TASK_COUNT = 20;
 
@@ -20,7 +21,7 @@ const dateFrom = (() => {
 })();
 
 // const tasks = generateTasks(TASK_COUNT);
-const api = new API(AUTHORIZATION);
+const api = new API(END_POINT, AUTHORIZATION);
 const tasksModel = new TasksModel();
 
 const siteMainElement = document.querySelector(`.main`);
