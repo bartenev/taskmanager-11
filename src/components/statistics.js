@@ -1,6 +1,6 @@
 import AbstractSmartComponent from "./abstract-smart-component.js";
 import {isOneDay} from "../utils/common.js";
-import Chart from "chart.js";
+import {Chart} from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import moment from "moment";
 import flatpickr from "flatpickr";
