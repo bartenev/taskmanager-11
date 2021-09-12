@@ -8,6 +8,8 @@ import TasksModel from "./models/tasks.js";
 // import {generateTasks} from "./mock/task.js";
 import {render} from "./utils/render.js";
 
+const AUTHORIZATION = `Basic dhf;ziofliudgspuf`;
+
 // const TASK_COUNT = 20;
 
 const dateTo = new Date();
@@ -18,7 +20,7 @@ const dateFrom = (() => {
 })();
 
 // const tasks = generateTasks(TASK_COUNT);
-const api = new API();
+const api = new API(AUTHORIZATION);
 const tasksModel = new TasksModel();
 
 const siteMainElement = document.querySelector(`.main`);
@@ -56,6 +58,9 @@ siteMenuComponent.setOnChange((menuItem) => {
 
 api.getTasks()
   .then((tasks) => {
+    console.log(tasks);
     tasksModel.setTasks(tasks);
     boardController.render();
   });
+
+
