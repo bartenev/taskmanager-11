@@ -33,10 +33,18 @@ export default class Provider {
 
   updateTask(id, data) {
     if (isOnline()) {
-      return this._api.updateTask(id, data);
+      return this._api.updateTask(id, data)
+        .then((newTask) => {
+          this._store.setItem(newTask.id, newTask.toRAW());
+
+          return newTask;
+        });
     }
 
-    return Promise.reject(`offline logic is not implemented`);
+    const localTask = Task.clone(Object.assign(data, {id}));
+    this._store.setItem(id, localTask.toRAW());
+
+    return Promise.resolve(localTask);
   }
 
   deleteTask(id) {
