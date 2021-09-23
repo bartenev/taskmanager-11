@@ -23,7 +23,13 @@ export default class Store {
             })
         )
     );
+  }
 
+  setItems(items) {
+    this._storage.setItem(
+        this._storeKey,
+        JSON.stringify(items)
+    );
   }
 
   removeItem(key) {
