@@ -5,6 +5,7 @@ import FilterController from "./controllers/filter.js";
 import Provider from "./api/provider";
 import SiteMenuComponent, {MenuItem} from './components/site-menu.js';
 import StatisticsComponent from "./components/statistics.js";
+import Store from "./api/store";
 import TasksModel from "./models/tasks.js";
 import {render} from "./utils/render.js";
 
@@ -19,7 +20,8 @@ const dateFrom = (() => {
 })();
 
 const api = new API(END_POINT, AUTHORIZATION);
-const apiWithProvider = new Provider(api);
+const store = new Store();
+const apiWithProvider = new Provider(api, store);
 const tasksModel = new TasksModel();
 
 const siteMainElement = document.querySelector(`.main`);
