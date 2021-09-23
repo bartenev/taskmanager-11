@@ -1,17 +1,14 @@
-import API from "./api.js";
+import API from "./api";
 import BoardComponent from './components/board.js';
 import BoardController from "./controllers/board";
 import FilterController from "./controllers/filter.js";
 import SiteMenuComponent, {MenuItem} from './components/site-menu.js';
 import StatisticsComponent from "./components/statistics.js";
 import TasksModel from "./models/tasks.js";
-// import {generateTasks} from "./mock/task.js";
 import {render} from "./utils/render.js";
 
 const AUTHORIZATION = `Basic dhf;ziofliudgspuf`;
 const END_POINT = `https://11.ecmascript.pages.academy/task-manager`;
-
-// const TASK_COUNT = 20;
 
 const dateTo = new Date();
 const dateFrom = (() => {
@@ -20,7 +17,6 @@ const dateFrom = (() => {
   return d;
 })();
 
-// const tasks = generateTasks(TASK_COUNT);
 const api = new API(END_POINT, AUTHORIZATION);
 const tasksModel = new TasksModel();
 
